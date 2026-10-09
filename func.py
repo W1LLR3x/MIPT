@@ -134,7 +134,7 @@ print(time.time()-t)
 t = time.time()
 print(LIS_nlogn(arr))
 print(time.time()-t)
-"""
+
 def fast_pow(a, n):
     if n == 1:
         return a
@@ -181,3 +181,64 @@ print(s)
 s = 3 * v_2
 print(s)
 print(abs(s))
+"""
+def bubble_sort(arr, key=None, comparator=lambda x, y: x < y):
+    n = len(arr)
+    for i in range(n):
+        for j in range(n-i-1):
+            if key is None:
+                if comparator(arr[j+1], arr[j]):
+                    arr[j], arr[j+1] = arr[j+1], arr[j]
+            else:
+                if comparator(key(arr[j+1]), key(arr[j])):
+                    arr[j], arr[j+1] = arr[j+1], arr[j]
+    return arr
+#a = ['ab', 'abcs', 'aas', 'at', 'a']
+#print(bubble_sort(a,key=lambda x: len(x), comparator=lambda x, y: x > y))
+
+def insertion_sort(arr):
+    n = len(arr)
+    for i in range(1, n):
+        tmp = arr[i]
+        j = i-1
+        while tmp < arr[j] and j >= 0:
+            arr[j], arr[j+1] = arr[j+1], arr[j]
+            j -= 1
+    return arr
+#a = [5, 3, 2, 1, 6, 8, 4]
+#print(insertion_sort(a))
+
+def choice_sort(arr):
+    n = len(arr)
+    for i in range(n):
+        min = float('+inf')
+        j_min = None
+        for j in range(i, n):
+            if arr[j] < min:
+                min = arr[j]
+                j_min = j
+        arr[i], arr[j_min] = arr[j_min], arr[i]
+    return arr
+#a = [5, 2, 6, 4, 7, 9]
+#print(choice_sort(a))
+
+class Stack:
+    def __init__(self):
+        self.array = []
+    def push(self, x):
+        self.array.append(x)
+
+    def pop(self):
+        return self.array.pop()
+
+    def top(self):
+        if self.array:
+            return self.array[-1]
+
+        else:
+            return None
+A = Stack()
+A.push(5)
+A.push(3)
+A.pop()
+print(A.top())
