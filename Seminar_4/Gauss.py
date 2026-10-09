@@ -22,7 +22,7 @@ steps2 = np.random.choice([-1, 1], size=(M, N_steps))
 x2 = np.cumsum(steps2, axis=1)
 positions = x2[:, -1]
 plt.figure(figsize=(8, 5))
-plt.hist(positions, bins=40)
+plt.hist(positions)
 plt.title("Гистограмма положений 1000 частиц после 1000 шагов")
 plt.xlabel("x(N)")
 plt.ylabel("Число частиц")
